@@ -2,6 +2,13 @@
 <html>
 <head>
     <title>Request Parameter Display</title>
+    <script>
+        function copyToClipboard() {
+            var textarea = document.getElementById("requestToken");
+            textarea.select();
+            document.execCommand("copy");
+        }
+    </script>
 </head>
 <body>
     <h1>Request Parameter Display</h1>
@@ -9,11 +16,13 @@
     <label for="requestToken">This is your request token:</label>
     <br>
     <textarea id="requestToken" rows="4" cols="50" readonly></textarea>
+    <br>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
 
     <script>
         // Read the request parameters
         const params = new URLSearchParams(window.location.search);
-        const requestToken = params.get('token');
+        const requestToken = params.get('requestToken');
         
         // Set the value of the textarea
         const textarea = document.getElementById('requestToken');
